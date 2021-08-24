@@ -19,13 +19,12 @@ public class HelloWorldView extends HorizontalLayout {
     private Button sayHello;
 
     public HelloWorldView() {
-//        Data database = new Data();
+
         addClassName("hello-world-view");
         name = new TextField("Your name");
         sayHello = new Button("Say hello");
         add(name, sayHello);
-        setVerticalComponentAlignment(Alignment.END, name, sayHello);
-//        List<DateTime> date = database.getValue(name.getValue());
+        setVerticalComponentAlignment(Alignment.END, sayHello, name);
         sayHello.addClickListener(e -> {
             Notification.show("Hello " + name.getValue());
         });

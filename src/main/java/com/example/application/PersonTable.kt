@@ -1,5 +1,6 @@
 package com.example.application
 
+import com.example.application.PersonTable.lastName
 import com.example.application.PersonTable.toRecord
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.Table
@@ -13,10 +14,10 @@ object PersonTable : Table("person") {
 
     val firstName = varchar("firstName", 16).index()
     val lastName = varchar("lastName", 16).index()
-    val email = varchar("email", 16).index()
-    val phone = varchar("phone", 16).index()
+    val email = varchar("email", 16).nullable()
+    val phone = varchar("phone", 16).nullable()
     val birth = date("birth").index()
-    val occupation = varchar("occupation", 16).index()
+    val occupation = varchar("occupation", 16).nullable()
 
 
     fun ResultRow.toRecord() =
@@ -33,10 +34,10 @@ object PersonTable : Table("person") {
 data class PersonRecord(
     val firstName: String,
     val lastName: String,
-    val email: String,
-    val phone: String,
+    val email: String?,
+    val phone: String?,
     val birth: LocalDate,
-    val occupation: String
+    val occupation: String?
 )
 
 
@@ -59,7 +60,11 @@ object PersonRepository {
     fun findByFirstName(firstName: String): List<PersonRecord> =
         personDbTx {
             PersonTable
-                .select { PersonTable.firstName eq firstName }
-                .map { resultRow: ResultRow -> resultRow.toRecord() }
+                .select { PersonTable.firstName eq firstName  }
+                .map { resultRow: ResultRow -> resultRow.toRecord()}
         }
+
+
+
 }
+

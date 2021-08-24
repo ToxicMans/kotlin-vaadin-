@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.application.views.helloworld.AllInfoSearch;
 import com.example.application.views.personform.PersonFormPage;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
@@ -125,6 +126,7 @@ public class MainLayout extends AppLayout {
                 new MenuItemInfo("Hello World", "la la-globe", HelloWorldView.class), //
                 new MenuItemInfo("Person Form", "la la-user", PersonFormView.class), //
                 new MenuItemInfo("Person Form 2", "la la-user", PersonFormPage.class), //
+                new MenuItemInfo("Hello World 2", "la la-globe", AllInfoSearch.class), //
 
         };
         List<Tab> tabs = new ArrayList<>();

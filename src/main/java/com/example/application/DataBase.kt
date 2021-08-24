@@ -6,7 +6,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 private val personDB by lazy {
     Database.connect(
-        "jdbc:postgresql://localhost:5432/task_1",
+        "jdbc:postgresql://localhost:5432/postgres",
         driver = "org.postgresql.Driver", user = "postgres", password = "QAZ123wsx123"
     ).also {
         transaction(it) {

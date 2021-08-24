@@ -47,11 +47,11 @@ public class PersonFormView extends Div {
 
         binder.bindInstanceFields(this);
         clearForm();
-//        Data data = new Data();
+
         cancel.addClickListener(e -> clearForm());
         save.addClickListener(e -> {
             personService.update(binder.getBean());
-//            data.setValue(firstName.getValue(), lastName.getValue(), email.getValue(), phone.getValue(), dateOfBirth.getValue().toDateTime(), occupation.getValue());
+
             clearForm();
         });
     }
