@@ -6,6 +6,7 @@ import com.example.application.views.MainLayout
 import com.vaadin.flow.component.button.Button
 import com.vaadin.flow.component.datepicker.DatePicker
 import com.vaadin.flow.component.html.Div
+import com.vaadin.flow.component.html.H3
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout
 import com.vaadin.flow.component.orderedlayout.VerticalLayout
 import com.vaadin.flow.component.textfield.TextField
@@ -13,7 +14,7 @@ import com.vaadin.flow.router.Route
 
 
 @Route("/personForm", layout = MainLayout::class)
-class PersonFormPage : Div() {
+class PersonFormPage : VerticalLayout() {
 
     private val firstNameField: TextField = TextField("First name")
     private val birthDateField: DatePicker = DatePicker("Birth date")
@@ -21,8 +22,6 @@ class PersonFormPage : Div() {
     private val emailField: TextField = TextField("Email")
     private val phoneField: TextField = TextField("Phone")
     private val occupationField: TextField = TextField("Occupation")
-
-
 
     private val saveButton = Button("Save").apply {
         addClickListener {
@@ -39,42 +38,15 @@ class PersonFormPage : Div() {
         }
     }
 
-
     init {
+        isMargin = true//Отступ
         add(
-            HorizontalLayout().apply {
-                add(firstNameField, lastNameField)
-
-            }
-
+            H3("Person Page"),
+            HorizontalLayout(firstNameField, lastNameField),
+            HorizontalLayout(birthDateField, phoneField),
+            HorizontalLayout(emailField, occupationField),
+            saveButton
         )
-        add(
-
-        )
-    }
-    init{
-        add(
-            HorizontalLayout().apply {
-                add(birthDateField, phoneField)
-            }
-        )
-
-    }
-    init{
-        add(
-            HorizontalLayout().apply {
-                add(emailField, occupationField)
-            }
-        )
-
-    }
-    init{
-        add(
-            HorizontalLayout().apply {
-                add(saveButton)
-            }
-        )
-
     }
 }
 
